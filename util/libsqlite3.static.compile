@@ -1,0 +1,16 @@
+--lib libsqlite3
+--no-default-source
+--inc=.
+--inc=source
+--def=SQLITE_ENABLE_FTS4
+--def=SQLITE_ENABLE_RTREE
+--def=SQLITE_ENABLE_COLUMN_METADATA
+--def=SQLITE_ENABLE_FTS5
+--src-c=source/sqlite3.c
+--include-path=include
+--install-inc=.
+--install-project=sqlite3
+--install-version-file=sqlite3.version.ini
+--install-dev
+--no-version
+--dependency-license=sqlite3

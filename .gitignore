@@ -49,6 +49,8 @@
 *.o2elf
 *.config.md5
 /bin/
-/build/
+/include/
 /lib/
-/sqlite3-3.31.1/
+/source/
+/build/
+/release/
