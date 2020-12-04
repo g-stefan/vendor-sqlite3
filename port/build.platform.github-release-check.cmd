@@ -5,7 +5,7 @@ rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-echo -^> git-release-check vendor-sqlite3
+echo -^> github-release-check vendor-sqlite3
 
 set PROJECT=vendor-sqlite3
 SET PROJECT_VENDOR=%PROJECT:vendor-=%
