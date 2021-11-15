@@ -23,12 +23,12 @@ del /F /Q archive\%PROJECT%-%VERSION%.7z goto:eof
 rem Source
 pushd archive
 set VENDOR=%PROJECT%-%VERSION%
-set WEB_LINK=https://www.sqlite.org/2020/sqlite-amalgamation-3330000.zip
+set WEB_LINK=https://www.sqlite.org/2021/sqlite-amalgamation-3360000.zip
 if not exist %VENDOR%.zip curl --insecure --location %WEB_LINK% --output %VENDOR%.zip
 7z x %VENDOR%.zip -aoa -o.
 del /F /Q %VENDOR%.zip
 if exist %VENDOR%.7z del /F /Q %VENDOR%.7z
-move sqlite-amalgamation-3330000 sqlite3-3.33.0
+move sqlite-amalgamation-3360000 sqlite3-3.36.0
 7zr a -mx9 -mmt4 -r- -sse -w. -y -t7z %VENDOR%.7z %VENDOR%
 rmdir /Q /S %VENDOR%
 popd
