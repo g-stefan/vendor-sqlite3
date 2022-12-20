@@ -1,1 +1,0 @@
-sqlite-amalgamation-3.38.2,https://www.sqlite.org/

@@ -1,8 +1,0 @@
---exe sqlite3
---no-default-source
---src-c=source/shell.c
---use-lib=:libsqlite3.static
---install-project=sqlite3
---install-dev
---no-version
---dependency-license=sqlite3

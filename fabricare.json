@@ -1,0 +1,9 @@
+{
+	"project": {
+		"name" : "sqlite3",
+		"type" : "xyo-cpp",
+		"SPDX-License-Identifier": "LicenseRef-",
+		"sourceLink" : "https://www.sqlite.org/",
+		"version" : "3.38.2"
+	}
+}
