@@ -52,7 +52,7 @@ var compileProject = {
 	"cSource" : [
 		"source/sqlite3.c"
 	],
-	"linkerDefinitionsFile" : "fabricare/sqlite3.def"
+	"linkerDefinitionsFile" : "fabricare/source/sqlite3.def"
 };
 
 Shell.filePutContents("temp/" + compileProject.project + ".compile.json", JSON.encodeWithIndentation(compileProject));
