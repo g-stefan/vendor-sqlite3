@@ -7,6 +7,7 @@
 		"version" : "3.40.1",
 		"hasRelease" : true,
 		"noVersion" : true,
-		"githubRelease" : true
+		"githubRelease" : true,
+		"githubRepository" : "vendor-sqlite3"
 	}
 }
