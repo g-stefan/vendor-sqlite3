@@ -26,14 +26,14 @@ Shell.removeFile("archive/" + Project.vendor + ".7z");
 
 // Source
 runInPath("archive", function() {
-	webLink = "https://www.sqlite.org/2022/sqlite-amalgamation-3400100.zip";
+	webLink = "https://www.sqlite.org/2023/sqlite-amalgamation-3410200.zip";
 	if (!Shell.fileExists(Project.vendor + ".zip")) {
 		exitIf(Shell.system("curl --insecure --location " + webLink + " --output " + Project.vendor + ".zip"));
 	};
 	exitIf(Shell.system("7z x " + Project.vendor + ".zip -aoa -o."));
 	Shell.removeFile(Project.vendor + ".zip");
 	Shell.removeFile(Project.vendor + ".7z");
-	Shell.rename("sqlite-amalgamation-3400100",Project.vendor);
+	Shell.rename("sqlite-amalgamation-3410200",Project.vendor);
 	exitIf(Shell.system("7z a -mx9 -mmt4 -r- -sse -w. -y -t7z " + Project.vendor + ".7z " + Project.vendor));
 	Shell.removeDirRecursively(Project.vendor);
 });
