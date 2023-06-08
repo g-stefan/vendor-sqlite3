@@ -11,8 +11,7 @@
 				"noVersion" : true
 			}
 		],
-		"releaseName" : "sqlite3",
-		"hasGithub" : true
+		"releaseName" : "sqlite3"
 	}
 }
 
