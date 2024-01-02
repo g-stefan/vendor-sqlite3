@@ -7,7 +7,7 @@
 				"name" : "sqlite3",
 				"SPDX-License-Identifier": "Unlicense with blessing",
 				"sourceLink" : "https://www.sqlite.org/",
-				"version" : "3.41.2",
+				"version" : "3.44.2",
 				"noVersion" : true
 			}
 		],
