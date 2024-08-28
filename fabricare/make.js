@@ -22,49 +22,58 @@ Shell.mkdirRecursivelyIfNotExists("output/include");
 Shell.copyFile("source/sqlite3.h", "output/include/sqlite3.h");
 Shell.copyFile("source/sqlite3ext.h", "output/include/sqlite3ext.h");
 
-global.xyoCCExtra = function() {
+global.xyoCCExtra = function () {
 	arguments.push(
 
-	    "--inc=output/include",
-	    "--use-lib-path=output/lib",
-	    "--rc-inc=output/include",
+		"--inc=output/include",
+		"--use-lib-path=output/lib",
+		"--rc-inc=output/include",
 
-	    "--inc=" + pathRepository + "/include",
-	    "--use-lib-path=" + pathRepository + "/lib",
-	    "--rc-inc=" + pathRepository + "/include"
+		"--inc=" + pathRepository + "/include",
+		"--use-lib-path=" + pathRepository + "/lib",
+		"--rc-inc=" + pathRepository + "/include"
 
 	);
 	return arguments;
 };
 
 var compileProject = {
-	"project" : "libsqlite3",
-	"includePath" : [
+	"project": "libsqlite3",
+	"includePath": [
 		"output/include",
 		"source",
 	],
-	"defines" : [
+	"defines": [
 		"SQLITE_ENABLE_FTS4",
 		"SQLITE_ENABLE_RTREE",
 		"SQLITE_ENABLE_COLUMN_METADATA",
 		"SQLITE_ENABLE_FTS5"
 	],
-	"cSource" : [
+	"cSource": [
 		"source/sqlite3.c"
 	],
-	"linkerDefinitionsFile" : "fabricare/source/sqlite3.def"
+	"linkerDefinitionsFile": "fabricare/source/sqlite3.def"
 };
 
 Shell.filePutContents("temp/" + compileProject.project + ".compile.json", JSON.encodeWithIndentation(compileProject));
-exitIf(xyoCC.apply(null, xyoCCExtra("@temp/" + compileProject.project + ".compile.json", "--lib", "--output-lib-path=output/lib", "--crt-static")));
-exitIf(xyoCC.apply(null, xyoCCExtra("@temp/" + compileProject.project + ".compile.json", "--dll", "--output-bin-path=output/bin", "--output-lib-path=output/lib")));
+if (Fabricare.isStatic()) {
+	exitIf(xyoCC.apply(null, xyoCCExtra("@temp/" + compileProject.project + ".compile.json", "--lib", "--output-lib-path=output/lib")));
+};
+if (Fabricare.isDynamic()) {
+	exitIf(xyoCC.apply(null, xyoCCExtra("@temp/" + compileProject.project + ".compile.json", "--dll", "--output-bin-path=output/bin", "--output-lib-path=output/lib")));
+};
 
 var compileProject = {
-	"project" : "sqlite3",
-	"includePath" : [ "output/include", "source" ],
-	"cSource" : [ "source/shell.c" ],
-	"library" : [ "libsqlite3.static" ]
+	"project": "sqlite3",
+	"includePath": ["output/include", "source"],
+	"cSource": ["source/shell.c"],
+	"library": ["libsqlite3"]
 };
 
 Shell.filePutContents("temp/" + compileProject.project + ".compile.json", JSON.encodeWithIndentation(compileProject));
-exitIf(xyoCC.apply(null, xyoCCExtra("@temp/" + compileProject.project + ".compile.json", "--exe", "--output-bin-path=output/bin", "--crt-static")));
+exitIf(xyoCC.apply(null, xyoCCExtra("@temp/" + compileProject.project + ".compile.json", "--exe", "--output-bin-path=output/bin")));
+
+if (OS.isWindows()) {
+	exitIf(!Shell.copyFile("output/lib/libsqlite3.lib", "output/lib/sqlite3.lib"));
+};
+
