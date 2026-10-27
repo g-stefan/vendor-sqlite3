@@ -1,6 +1,5 @@
 {
 	"solution": {
-		"namespace" : "xyo",
 		"name" : "vendor-sqlite3",
 		"type" : "xyo-cpp",
 		"projects": [
